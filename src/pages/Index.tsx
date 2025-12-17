@@ -255,26 +255,26 @@ const Index = () => {
 
   if (gameMode === 'menu') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#FFF8F0] via-[#F5E6D3] to-[#E5D4C1] flex flex-col items-center justify-center p-4 sm:p-6">
+      <div className="min-h-screen bg-gradient-to-br from-[#FFF8F0] via-[#F5E6D3] to-[#E5D4C1] flex flex-col items-center justify-center p-6">
         <div className="max-w-2xl w-full animate-fade-in">
-          <div className="text-center mb-8 sm:mb-12 px-2">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-primary mb-3 sm:mb-4">
+          <div className="text-center mb-12">
+            <h1 className="text-5xl md:text-6xl font-serif font-bold text-primary mb-4">
               Наша игра
             </h1>
-            <p className="text-base sm:text-lg text-primary/80 font-light max-w-md mx-auto px-4">
+            <p className="text-lg text-primary/80 font-light max-w-md mx-auto">
               Вытягивайте карточки и отвечайте на вопросы, чтобы стать ближе друг к другу
             </p>
           </div>
 
-          <div className="grid gap-2.5 sm:gap-3 md:gap-4">
+          <div className="grid gap-3 md:gap-4">
             {(Object.keys(categoryNames) as Category[]).map((category) => (
               <Button
                 key={category}
                 onClick={() => handleCategorySelect(category)}
                 variant="outline"
-                className="h-auto py-3.5 sm:py-4 px-5 sm:px-6 text-left justify-start bg-white/80 hover:bg-white active:bg-white border-2 border-primary/20 hover:border-primary/40 active:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98]"
+                className="h-auto py-4 px-6 text-left justify-start bg-white/80 hover:bg-white border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 shadow-sm hover:shadow-md"
               >
-                <span className="text-base sm:text-lg font-medium text-primary">
+                <span className="text-lg font-medium text-primary">
                   {categoryNames[category]}
                 </span>
               </Button>
@@ -286,46 +286,45 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFF8F0] via-[#F5E6D3] to-[#E5D4C1] flex flex-col items-center justify-between sm:justify-center p-4 sm:p-6 py-6 sm:py-6">
-      <div className="max-w-2xl w-full flex flex-col h-full sm:h-auto">
-        <div className="mb-4 sm:mb-6 flex items-center justify-between flex-shrink-0">
+    <div className="min-h-screen bg-gradient-to-br from-[#FFF8F0] via-[#F5E6D3] to-[#E5D4C1] flex flex-col items-center justify-center p-6">
+      <div className="max-w-2xl w-full">
+        <div className="mb-6 flex items-center justify-between">
           <Button
             onClick={handleBackToMenu}
             variant="ghost"
-            className="text-primary hover:text-primary/80 active:text-primary/90 -ml-2 sm:ml-0"
-            size="sm"
+            className="text-primary hover:text-primary/80"
           >
-            <Icon name="ArrowLeft" size={18} className="mr-1.5" />
-            <span className="text-sm sm:text-base">Назад</span>
+            <Icon name="ArrowLeft" size={20} className="mr-2" />
+            Назад
           </Button>
           
-          <span className="text-xs sm:text-sm font-medium text-primary/70 max-w-[60%] text-right truncate">
+          <span className="text-sm font-medium text-primary/70">
             {categoryNames[selectedCategory]}
           </span>
         </div>
 
         <div 
-          className={`bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 min-h-[320px] sm:min-h-[400px] flex flex-col items-center justify-center transition-all duration-500 flex-grow sm:flex-grow-0 ${
+          className={`bg-white rounded-3xl shadow-2xl p-8 md:p-12 min-h-[400px] flex flex-col items-center justify-center transition-all duration-500 ${
             isFlipping ? 'animate-flip-out' : 'animate-flip-in'
           }`}
           style={{ perspective: '1000px' }}
         >
           {currentQuestion && (
-            <div className="text-center space-y-6 sm:space-y-8 w-full">
-              <p className="text-xl sm:text-2xl md:text-3xl font-serif text-primary leading-relaxed px-2">
+            <div className="text-center space-y-8">
+              <p className="text-2xl md:text-3xl font-serif text-primary leading-relaxed">
                 {currentQuestion.text}
               </p>
               
-              <div className="pt-2 sm:pt-4">
-                <p className="text-xs sm:text-sm text-primary/50 mb-4 sm:mb-6 px-4">
+              <div className="pt-4">
+                <p className="text-sm text-primary/50 mb-6">
                   Потрясите телефон или нажмите кнопку для новой карточки
                 </p>
                 <Button
                   onClick={handleNewCard}
                   size="lg"
-                  className="bg-primary hover:bg-primary/90 active:bg-primary/80 text-primary-foreground font-medium px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl active:shadow-md transition-all duration-300 active:scale-[0.98] w-full sm:w-auto"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-8 py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  <Icon name="Shuffle" size={18} className="mr-2" />
+                  <Icon name="Shuffle" size={20} className="mr-2" />
                   Следующая карточка
                 </Button>
               </div>
